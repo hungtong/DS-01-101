@@ -1,0 +1,454 @@
+---
+title: "Lecture 2B: More about Vectors"
+author: "Hung Tong"
+institute: "Rowan University"
+format: 
+  revealjs:
+    slide-number: true
+    self-contained: true
+    code-overflow: wrap
+editor: visual
+echo: true
+eval: false
+output: true
+code-line-numbers: false
+auto-stretch: false
+---
+
+## Reading
+
+From **R Coding Basics: An Introduction to the Basics of Coding in R** by Dr. Gaston Sanchez:
+
+-   First Contact with Vectors
+
+-   Properties of Vectors
+
+-   Creating Vectors
+
+-   More about Vectors
+
+## Topics
+
+-   Implicit Coercion
+
+-   Vectorization and recycling
+
+-   Subsetting: numeric and logical indexing
+
+## Implicit Coercion
+
+-   Broadly speaking, implicit coercion is how R decides what type the output should be when combining or performing operations on different atomic types.
+
+-   Logical values are automatically coerced to numeric when used in calculations.
+
+```{r}
+
+TRUE + 5     # TRUE becomes 1 so 1 + 5 = 6
+#> [1] 6
+
+FALSE + 5    # FALSE becomes 0 so 0 + 5 = 5
+#> [1] 5
+
+sum(c(TRUE, FALSE, TRUE))    # 1 + 0 + 1 = 2
+#> [1] 2
+```
+
+## Implicit Coercion
+
+-   Implicit coercion occurs when we combine different atomic types into a single vector.
+
+```{r}
+
+# integer > logical
+c(4L, TRUE, TRUE, FALSE)
+#> [1] 4 1 1 0
+
+# double > integer > logical
+c(7.3, 4L, TRUE, TRUE, FALSE)
+#> [1] 7.3 4.0 1.0 1.0 0.0
+
+# character > double > integer > logical
+c("eagles", 7.3, 4L, TRUE, TRUE, FALSE)
+#> [1] "eagles" "7.3"    "4"      "TRUE"   "TRUE"   "FALSE"
+```
+
+## Your Turn
+
+Without running R, predict the output in the following code
+
+```{r}
+
+TRUE * 2
+
+FALSE * 2
+
+v1 <- c(FALSE, FALSE, TRUE, FALSE)
+sum(v1)
+
+v2 <- c(TRUE, 3.5, FALSE, 1L)
+sum(v2)
+```
+
+## Vectorization
+
+-   In R, vectorization means when we apply a function or operation on a vector, it will be done element by element automatically.
+
+-   This means we do not need to loop through the vector.
+
+```{r}
+
+x <- c(4, 9, 25, 49)
+sqrt(x)
+#> [1] 2 3 5 7
+
+#       x:      4        8         25         49
+# sqrt(x): sqrt(4)  sqrt(8)   sqrt(25)   sqrt(49)
+#  output:      2        3          5          7
+```
+
+## Vectorization
+
+-   Vectorization also implies that an operation will be done in an element-wise manner.
+
+```{r}
+
+x <- c(1, 2, 3, 4)
+y <- c(3, 5, 6, 2)
+x + y
+#> [1] 4 7 9 6
+
+#      x:  1  2  3  4
+#          +  +  +  +
+#      y:  3  5  6  2
+# output:  4  7  9  6
+```
+
+## Recycling
+
+-   When performing operations on two vectors are different lengths, R will "recycle" the shorter vector to match the length of the longer one.
+
+```{r}
+
+x <- c(1, 2, 3, 4)
+x * 2
+
+#      x: 1  2  3  4
+#         *  *  *  *
+#         2  2  2  2
+# output: 2  4  6  8
+```
+
+## Your Turn
+
+Try the following R code and see what it returns. What do you think this sneaky code does?
+
+```{r}
+
+# Please avoid!
+
+x <- c(5, 3, 7, 4, 6)
+y <- c(1, 2)
+x + y
+```
+
+## Creating Logical Vectors
+
+-   Logical vectors can be created using comparison operators.
+
+|                      |                          |
+|:---------------------|:-------------------------|
+| **Logical Operator** | **Description**          |
+| `<`                  | Less than                |
+| `>`                  | Greater than             |
+| `<=`                 | Less than or equal to    |
+| `>=`                 | Greater than or equal to |
+| `==`                 | Exactly equal to         |
+| `!=`                 | Not equal to             |
+
+## Your Turn
+
+Try the following R code and see what it returns.
+
+```{r}
+
+x <- c(-2, -1, 0, 1, 2, 3)
+
+x < 0     # less than
+
+x > 0     # greater than
+
+x <= 0    # less than or equal to
+
+x >= 0    # greater than or equal to
+ 
+x == 0    # exactly equal to
+ 
+x != 0    # not equal to
+```
+
+## Answer
+
+```{r}
+
+x < 0     # less than
+#> [1]  TRUE  TRUE FALSE FALSE FALSE FALSE
+
+x > 0     # greater than
+#> [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE
+
+x <= 0    # less than or equal to
+#> [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE
+
+x >= 0    # greater than or equal to
+#> [1] FALSE FALSE  TRUE  TRUE  TRUE  TRUE
+
+x == 0    # exactly equal to
+#> [1] FALSE FALSE  TRUE FALSE FALSE FALSE
+
+x != 0    # not equal to
+#> [1]  TRUE  TRUE FALSE  TRUE  TRUE  TRUE
+```
+
+## Your Turn
+
+Try the following R code and see what it returns. Explain what the code does.
+
+```{r}
+
+x <- c(-2, -1, 0, 1, 2, 3)
+
+sum(x < 0)
+
+sum(x > 0)
+
+sum(x <= 0)
+
+sum(x >= 0)
+
+sum(x == 0)
+
+sum(x != 0)
+```
+
+## Answer
+
+```{r}
+
+x <- c(-2, -1, 0, 1, 2, 3)
+
+sum(x < 0)
+#> [1] 2
+
+sum(x > 0)
+#> [1] 3
+
+sum(x <= 0)
+#> [1] 3
+
+sum(x >= 0)
+#> [1] 4
+
+sum(x == 0)
+#> [1] 1
+
+sum(x != 0)
+#> [1] 5
+```
+
+## Creating Logical Vectors
+
+-   Relational operators are powerful tools to combine conditional statements
+
+|                           |                 |
+|:--------------------------|:----------------|
+| **Relationship Operator** | **Description** |
+| &                         | and             |
+| \|                        | or              |
+| !                         | not             |
+
+## Your Turn
+
+Try the following R code and see what it returns.
+
+```{r}
+
+x <- c(1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+x > 3 & x < 8
+
+!(x > 3 & x < 8)
+```
+
+## Answer
+
+```{r}
+
+x <- c(1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+### 3 < x < 8
+
+x > 3 & x < 8
+#> [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE
+
+### opposite of 3 < x < 8
+
+!(x > 3 & x < 8)
+#> [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE
+```
+
+## Your Turn
+
+Try the following R code and see what it returns.
+
+```{r}
+
+x <- c(1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+x < 4 | x > 6
+
+!(x < 4 | x > 6)
+```
+
+## Answer
+
+```{r}
+
+x <- c(1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+### x < 4 or x > 6
+
+x < 4 | x > 6
+#> [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE
+
+### opposite of (x < 4 or x > 6)
+
+!(x < 4 | x > 6)
+#> [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE
+```
+
+## Subsetting
+
+-   Certain elements of a vector can be subsetted using the brackets `[]`
+
+![](image/2_vector_index.png)
+
+## Subsetting
+
+Subsetting can be done using one of the following indexing methods:
+
+-   Numeric indexing
+
+-   Logical indexing
+
+-   Character indexing (if the vector has names; not covered here)
+
+## Numeric Indexing
+
+-   Numeric indexing can also use a vector of multiple indices.
+
+```{r}
+
+#       1   2   3   4   5   6   7
+v <- c(70, 66, 82, 85, 78, 90, 73)
+
+v[1]            # 1st value
+#> [1] 70
+
+v[4]            # 4th value
+#> [1] 85
+
+v[length(v)]    # last value, 7th value
+#> [1] 73
+
+v[320]          # Not available
+#> [1] NA
+```
+
+## Numeric Indexing
+
+-   Numeric indexing can also use a vector of multiple indices.
+
+```{r}
+
+#       1   2   3   4   5   6   7
+v <- c(70, 66, 82, 85, 78, 90, 73)
+
+v[2:5]                 # at 2nd, 3rd, 4th, 5th
+#> [1] 66 82 85 78
+
+v[5:2]                 # at 5th, 4th, 3rd, 2nd
+#> [1] 78 85 82 66
+
+v[c(3, 1, 3, 5, 2)]    # at 3rd, 1st, 3rd, 5th, 2nd
+#> [1] 82 70 82 78 66
+```
+
+## Numeric Indexing
+
+-   Note that negative indices mean all but the specified indices.
+
+```{r}
+
+#       1   2   3   4   5   6   7
+v <- c(70, 66, 82, 85, 78, 90, 73)
+
+v[-1]                    # all but 1st value
+#> [1] 66 82 85 78 90 73    
+
+v[-c(2, 5)]              # all but 2nd and 5th values
+#> [1] 70 82 85 90 73
+
+v[-(1:4)]                # all but 1st to 4th values
+#> [1] 78 90 73
+
+v[-1:4]                  # Error!
+```
+
+## Logical Indexing
+
+-   With logical indexing, `TRUE` will retain the elements, while `FALSE` will discard the elements.
+
+-   Logical indexing allows for subsetting with conditions.
+
+```{r}
+
+#       1   2   3   4   5   6   7
+v <- c(70, 66, 82, 85, 78, 90, 73)
+
+v[c(TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE)]
+#> [1] 70 90
+
+v[c(FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE)]
+#> [1] 66 82 85
+
+v[v > 80]
+#> [1] 82 85 90
+```
+
+## Your Turn
+
+Use numeric and logical indexing to subset
+
+-   `66 82 90 73`
+
+-   `70 66 78 73`
+
+```{r}
+
+#       1   2   3   4   5   6   7
+v <- c(70, 66, 82, 85, 78, 90, 73)
+```
+
+## Answer
+
+```{r}
+
+#       1   2   3   4   5   6   7
+v <- c(70, 66, 82, 85, 78, 90, 73)
+
+v[c(2, 3, 6, 7)]
+v[c(FALSE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE)]
+
+v[c(1, 2, 5, 7)]
+v[v < 80]
+```
