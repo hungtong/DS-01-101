@@ -60,7 +60,7 @@ format:
 
 ![](https://github.com/hungtong/DS-01-101/blob/main/image/4_side_bar.png?raw=true){fig-align="center" width="411"}
 
-## Obtaining frequency distribution and bar plot
+## Obtaining frequency distribution and bar plot in R
 
 -   Frequency distribution for a categorical variable can be obtained using the `table()` function.
 
@@ -129,7 +129,7 @@ barplot(
 ### R code here
 ```
 
-## Stacked and side-by-side bar plot
+## Stacked and side-by-side bar plot in R
 
 -   For two categorical variables, the `table()` function produces a contingency table.
 
@@ -164,23 +164,23 @@ The data set is slightly modified from [OpenIntro](https://www.openintro.org/boo
 
 The data set has the following variables:
 
--   `genhlth` - General health, with categories Excellent, Very Good, Good, Fair, and Poor.
+-   `genhlth` - General health, with categories Excellent, Very Good, Good, Fair, and Poor
 
--   `exerany` - Whether the respondent exercised in the past month.
+-   `exerany` - Whether the respondent exercised in the past month
 
--   `hlthplan` - Whether respondent has some form of health coverage.
+-   `hlthplan` - Whether respondent has some form of health coverage
 
--   `smoke100` - Whether respondent has smoked at least 100 cigarettes in their entire life.
+-   `smoke100` - Whether respondent has smoked at least 100 cigarettes in their entire life
 
--   `height` - Respondent's height in inches.
+-   `height` - Respondent's height in inches
 
--   `weight` - Respondent's weight in pounds.
+-   `weight` - Respondent's weight in pounds
 
--   `wtdesire` - Respondent's desired weight in pounds.
+-   `wtdesire` - Respondent's desired weight in pounds
 
--   `age` - Respondent's age in years.
+-   `age` - Respondent's age in years
 
--   `gender` - Respondent's gender.
+-   `gender` - Respondent's gender
 
 **Hands-On**
 
