@@ -5,7 +5,7 @@ author: "Hung Tong"
 institute: "Rowan University"
 editor: visual
 toc: true
-toc-depth: 2
+toc-depth: 3
 echo: true
 eval: false
 output: false

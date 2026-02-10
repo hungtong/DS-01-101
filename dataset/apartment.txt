@@ -1,0 +1,6 @@
+floor;bed;lease;pool;rent
+first;0;9;yes;1200
+second;1;12;no;1550
+first;2;12;yes;1900
+second;1;9;no;1650
+first;0;12;yes;1300

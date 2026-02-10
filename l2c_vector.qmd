@@ -1,0 +1,248 @@
+---
+title: "Lesson 2C: Character Vector and Factor"
+subtitle: "DS 01-101: In-Depth Introduction to Data Science (Spring 2026)"
+author: "Hung Tong"
+institute: "Rowan University"
+editor: visual
+toc: true
+toc-depth: 2
+echo: true
+eval: false
+output: false
+format: 
+  html:
+    self-contained: true
+---
+
+## Readings
+
+From **R Coding Basics: An Introduction to the Basics of Coding in R** by Dr. Gaston Sanchez:
+
+-   [Factors](https://www.gastonsanchez.com/R-coding-basics/2-01-factors.html)
+
+## Topics
+
+-   Character vector
+
+-   Useful functions for character vector
+
+-   Factor
+
+## Character vector
+
+-   Data can be in the form  of specific categories that describe a certain characteristic.
+
+-   Categories such as gender, color, nationality, and college major are said to be **nominal** because they have [no]{.underline} natural ordering.
+
+-   In contrast, categories such as education level, customer satisfaction, and Likert scale responses, are **ordinal** because they do have a natural ordering.
+
+-   In R, a **character vector** is often used to represent nominal categories.
+
+```{r}
+
+# character vector
+c('male', 'female', 'female', 'male', 'female')  
+c('Math', 'Data Science', 'Math', 'Computer Science', 'Data Science')  
+```
+
+## Useful functions for character vector
+
+-   `nchar()` counts the number of characters of each element
+
+```{r}
+
+v <- c('Data', 'science', 'is', 'fun', 'and', 'challenging')
+
+nchar(v)
+#> [1]  4  7  2  3  3 11
+```
+
+**Hands-On**
+
+Write R code to count the number of characters of the following vector:
+
+```{r}
+towns <- c('Glassboro', 'Clayton', 'Pitman', 'Deptford')
+```
+
+**Answer:**
+
+```{r}
+
+### R code here
+```
+
+-   `strsplit()` splits a string into words
+
+```{r}
+
+strsplit('Data science is fun and challenging', split = ' ')
+#> [[1]]
+#> [1] "Data"        "science"     "is"          "fun"         "and"        
+#> [6] "challenging"
+```
+
+**Hands-On**
+
+Write R code extract words in the following string:
+
+```{r}
+#> 'Name,Age,Major,GPA,Hobbies'
+```
+
+**Answer:**
+
+```{r}
+
+### R code here
+```
+
+-   `paste()` concatenates elements of character vectors
+
+```{r}
+towns <- c('Glassboro', 'Clayton', 'Pitman', 'Deptford')
+
+paste(towns, 'NJ')
+
+paste(towns, 'NJ', sep = ' ')
+
+paste(towns, 'NJ', sep = ', ')
+
+paste(towns, 'NJ', sep = ' in ')
+```
+
+**Hands-On**
+
+Write R code to generate the following output:
+
+```{r}
+#> [1] "Glassboro Township" "Clayton Township"   "Pitman Township"   
+#> [4] "Deptford Township"
+```
+
+**Answer:**
+
+```{r}
+
+### R code here
+```
+
+**Hands-On**
+
+What does the `paste0()` function does?
+
+```{r}
+towns <- c('Glassboro', 'Clayton', 'Pitman', 'Deptford')
+
+paste0(towns, 'NJ')
+```
+
+**Answer:**
+
+```{r}
+
+### R code here
+```
+
+-   Thanks to vectorization, `paste()` allows corresponding elements to be concatenated.
+
+```{r}
+
+first_names <- c('James', 'Robert', 'Mary')
+last_names  <- c('Smith', 'Williams', 'Brown')
+
+paste(first_names, last_names)
+```
+
+**Hands-On**
+
+Write R code to generate the following output:
+
+```{r}
+#> [1] "Smith, James"     "Williams, Robert" "Brown, Mary"
+```
+
+**Answer:**
+
+```{r}
+
+### R code here
+```
+
+**Hands-On**
+
+Write R code to generate the following output:
+
+```{r}
+#> [1] "Glassboro, NJ 08028" "Clayton, NJ 08312"   "Pitman, NJ 08071"   
+#> [4] "Deptford, NJ 08096" 
+```
+
+**Answer:**
+
+```{r}
+
+### R code here
+```
+
+## Factor
+
+-   A **factor** is a specialized data structure for categories, especially ordinal categories.
+
+-   It behaves like a vector but has additional attributes.
+
+-   A factor displays categories (levels) but stores them internally as integers.
+
+-   A factor is created from a character vector using the `factor()` function.
+
+```{r}
+### Nominal factor
+
+#> [1] O  A  AB O  O  B  A  B  AB
+#> Levels: A B AB O
+
+### Ordinal factor
+
+#>  [1] extra hot mild      hot       mild      medium    extra hot mild     
+#>  [8] medium    extra hot medium    extra hot mild     
+#> Levels: mild < medium < hot < extra hot
+```
+
+**Hands-On**
+
+Create a nominal factor from the following character vector:
+
+```{r}
+blood <- c('O', 'A', 'AB', 'O', 'O', 'B', 'A', 'B', 'AB')
+```
+
+**Answer:**
+
+```{r}
+
+### R code here
+```
+
+**Hands-On**
+
+Create an ordinal factor from the following character vector:
+
+```{r}
+pepper <- c('extra hot', 'mild', 'hot', 'mild', 'medium', 'extra hot', 
+            'mild', 'medium', 'extra hot', 'medium', 'extra hot', 'mild')
+```
+
+**Answer:**
+
+```{r}
+
+### R code here
+```
+
+**Hands-On**
+
+Create an ordinal factor from the following character vector:
+
+```{r}
+shirts <- c('L', 'XL', 'XL', 'L', 'M', 'S', 'S', 'XL', 'M', 'S', 'L', 'S')
+```

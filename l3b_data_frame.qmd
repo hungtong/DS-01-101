@@ -1,0 +1,333 @@
+---
+title: "Lesson 3B: Importing Data Frame"
+subtitle: "DS 01-101: In-Depth Introduction to Data Science (Spring 2026)"
+author: "Hung Tong"
+institute: "Rowan University"
+editor: visual
+toc: true
+toc-depth: 3
+echo: true
+eval: false
+output: false
+format: 
+  html:
+    self-contained: true
+---
+
+## Readings
+
+From **R Coding Basics: An Introduction to the Basics of Coding in R** by Dr. Gaston Sanchez:
+
+-   [Import Data Tables](https://www.gastonsanchez.com/R-coding-basics/6-02-import-tables.html)
+
+## Topics
+
+-   Built-in data sets
+
+-   Importing data
+
+-   Inspecting a data frame
+
+-   Storing data and objects
+
+## Built-in data frames
+
+R has many built-in data sets:
+
+-   `faithful` Old Faithful Gayser Data
+
+```{r}
+
+?faithful
+
+head(faithful)
+
+#   eruptions waiting
+# 1     3.600      79
+# 2     1.800      54
+# 3     3.333      74
+# 4     2.283      62
+# 5     4.533      85
+# 6     2.883      55
+```
+
+-   `iris` Edgar Anderson's Iris Data
+
+```{r}
+
+?iris
+
+head(iris)
+
+#   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+# 1          5.1         3.5          1.4         0.2  setosa
+# 2          4.9         3.0          1.4         0.2  setosa
+# 3          4.7         3.2          1.3         0.2  setosa
+# 4          4.6         3.1          1.5         0.2  setosa
+# 5          5.0         3.6          1.4         0.2  setosa
+# 6          5.4         3.9          1.7         0.4  setosa
+```
+
+-   `mtcars` Motor Trend Car Road Tests
+
+```{r}
+
+?mtcars
+
+head(mtcars)
+
+#                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+# Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+# Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+# Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+# Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+# Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+# Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+```
+
+-   `USArrests` Violent Crime Rates by US State
+
+```{r}
+
+?USArrests
+
+head(USArrests)
+
+#            Murder Assault UrbanPop Rape
+# Alabama      13.2     236       58 21.2
+# Alaska       10.0     263       48 44.5
+# Arizona       8.1     294       80 31.0
+# Arkansas      8.8     190       50 19.5
+# California    9.0     276       91 40.6
+# Colorado      7.9     204       78 38.7
+```
+
+## Reading data from the clipboard
+
+A data frame can be made by reading from the clipboard as follows:
+
+-   Select and copy the content from a data file
+
+    ![](https://github.com/hungtong/DS-01-101/blob/main/image/3_loan50.png?raw=true)
+
+-   Use the `read.delim()` function
+
+```{r}
+read.delim('clipboard')
+```
+
+## Importing data with `read.table()` and `read.csv()`
+
+-   Small and medium-size data sets are usually stored in a **text file** `.txt`
+
+-   Data in a text file are separated by a **delimiter** such as white space, comma, tab, or semi-colon.
+
+-   A text file in which data are separated by a comma is equivalent to a **comma-separated value** file `.csv`, which is commonly used in statistics and data science due to portability.
+
+```{r}
+
+### comma-separated value
+
+floor,bed,lease,pool,rent
+first,0,9,yes,1200
+second,1,12,no,1550
+first,2,12,yes,1900
+second,1,9,no,1650
+first,0,12,yes,1300
+```
+
+-   The `read.table()` function is a general function to read data from a text file. Before using the function, it is best to move the text file under the current working directory.
+
+```{r}
+read.table('file_name.csv', header = TRUE, sep = ' ')
+
+read.table('file_name.csv', header = TRUE, sep = ',')
+
+read.table('file_name.csv', header = TRUE, sep = '\t')
+
+read.table('file_name.csv', header = TRUE, sep = ';')
+```
+
+-   The `read.csv()` function is just a wrapper of the `read.table()` function for importing comma-separated value file `.csv`
+
+```{r}
+read.csv('file_name.csv')    # same as read.table('file_name.csv', sep = ',')
+```
+
+**Hands-On**
+
+Import the apartment data.
+
+```{r}
+
+```
+
+**Answer:**
+
+```{r}
+
+### R code here
+```
+
+## Inspecting a data frame
+
+Given a data frame,
+
+-   `str()` shows its overall structure
+
+-   `head()` returns its first few rows
+
+-   `tail()` returns its last few rows
+
+-   `dim()` returns a vector dimensions
+
+-   `nrow()` returns its number of rows
+
+-   `ncol()` returns its number of columns
+
+-   `colnames()` and `names()` returns its column names
+
+-   `rownames()` returns its row names
+
+-   `summary()` shows descriptive statistics for its columns
+
+-   `complete.cases()` returns a logical vector indicating which observations have no missing values.
+
+**Hands-On**
+
+Inspect the `iris` data.
+
+**Answer:**
+
+```{r}
+
+### R code here
+```
+
+**Hands-On**
+
+Import and inspect the `loan50` data from [OpenIntro](https://www.openintro.org/data/index.php?data=loan50).
+
+> This data set represents 50 loans made through the Lending Club platform, which is a platform that allows individuals to lend to other individuals. Of course, not all loans are created equal. Someone who is a essentially a sure bet to pay back a loan will have an easier time getting a loan with a low interest rate than someone who appears to be riskier. And for people who are very risky? They may not even get a loan offer, or they may not have accepted the loan offer due to a high interest rate.
+
+-   `state` - Two-letter state code.
+
+-   `emp_length` - Number of years in the job, rounded down. If longer than 10 years, then this is represented by the value 10.
+
+-   `term` - The number of months of the loan the applicant received.
+
+-   `home_ownership` - The ownership status of the applicant's residence.
+
+-   `annual_income` - Annual income.
+
+-   `verified_income` - Type of verification of the applicant's income.
+
+-   `debt_to_income` - Debt-to-income ratio.
+
+-   `total_credit_limit` - Total available credit, e.g. if only credit cards, then the total of all the credit limits. This excludes a mortgage.
+
+-   `total_credit_utilized` - Total credit balance, excluding a mortgage.
+
+-   `num_cc_carrying_balance` - Number of credit cards that are carrying a balance.
+
+-   `loan_amount` - The amount of the loan the applicant received.
+
+-   `grade` - Grade associated with the loan.
+
+-   `interest_rate` - Interest rate of the loan the applicant received.
+
+-   `public_record_bankrupt` - Number of bankruptcies listed in the public record for this applicant.
+
+-   `loan_status` - Status of the loan.
+
+-   `has_second_income` - Whether the applicant has a secondary income.
+
+-   `total_income` - The applicant's total income.
+
+```{r}
+
+```
+
+**Answer:**
+
+```{r}
+
+### R code here
+```
+
+## Storing data with `write.table()` and `write.csv()`
+
+-   To export a data frame to `.txt` or `.csv` files, we can use the `write.table()` and `write.csv()` functions with different delimiters.
+
+```{r}
+write.table(data_to_store, file = 'file_name.txt', sep = '')
+
+write.table(data_to_store, file = 'file_name.txt', sep = '\t')
+
+write.csv(data_to_store, file = 'file_name.csv')
+```
+
+**Hands-On**
+
+Export loans that are fully paid from the `loan50` data to `.txt` or `.csv` files.
+
+**Answer:**
+
+```{r}
+
+### R code here
+```
+
+## Storing objects with `dput()`
+
+-   The `dput()` function writes an R object in a plain-text format that can be used to reproduce the object.
+
+```{r}
+dput(some_object)
+```
+
+**Hands-On**
+
+Write loans that are fully paid from the `loan50` data in a plain-text format.
+
+**Answer:**
+
+```{r}
+
+### R code here
+```
+
+## Storing objects with `save()`
+
+-   The `save()` allows us to store multiple objects in `.rdata` or `.rda`.
+
+```{r}
+save(object1, object2, object3, file = 'file_name.rdata')
+```
+
+**Hands-On**
+
+Identify the following objects from the `loan50` data and store them in `.rdata`
+
+-   `loan_mortgage` - loans associated with homeownership that is mortgatge
+
+-   `loan_20k` - loans with the loan amount at least $20,000$
+
+-   `loan_low_interest` - loans with interest rate less than $7\%$
+
+**Answer:**
+
+```{r}
+
+### R code here
+```
+
+## Miscellaneous functions
+
+-   `ls()` shows all the created objects
+
+-   `rm()` removes certain objects
+
+-   `getwd()` returns the file path of the current working directory
+
+-   `setwd()` sets a new working directory
