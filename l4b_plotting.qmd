@@ -14,15 +14,28 @@ format:
     self-contained: true
 ---
 
+```{r}
+#| include: false
+#| eval: true
+
+load(url('https://github.com/hungtong/DS-01-101/raw/refs/heads/main/dataset/l4b_data.rdata'))
+```
+
 ## Topics
 
--   Data frame and matrix
+-   Basic variable types
 
--   Creating a data frame
+-   Histogram
 
--   Selecting elements in a data frame
+-   Mean and median
 
--   Adding, removing, and transforming a column
+-   Quartiles and five-number summary
+
+-   Interquartile range (IQR), variance, and standard deviation
+
+-   Box plot
+
+-   Scatter plot and correlation
 
 ## Basic Data Types
 
@@ -70,7 +83,7 @@ format:
 
 -   Histogram can be generated using the `hist()` function. The number of bins will be automatically determined by R, but we can also adjust by changing `breaks`.
 
--   Recall Common graphical parameters in base R plotting:
+-   Recall common graphical parameters in base R plotting:
 
     -   `col` - add color to the plot
     -   `main` - main title label
@@ -86,10 +99,6 @@ format:
 
 The `bus_driver` data set was collected from bus drivers employed by public corporations. Each data point gives the number of traffic accidents in which each bus driver was involved during a 4-year period. Obtain the histogram of this data set and comment on the data distribution.
 
-```{r}
-# load("l4b_data.rdata")
-```
-
 **Answer:**
 
 ```{r}
@@ -100,10 +109,6 @@ The `bus_driver` data set was collected from bus drivers employed by public corp
 **Hands-On**
 
 The `math_sat` data set contains the math-portion scores of the SAT exam in 2008. Each score is between 200 and 800. Obtain the histogram of this data set and comment on the data distribution.
-
-```{r}
-# load("l4b_data.rdata")
-```
 
 **Answer:**
 
@@ -117,7 +122,7 @@ The `math_sat` data set contains the math-portion scores of the SAT exam in 2008
 The `lifetime` data set contains ages at death for a group of individuals. Obtain the histogram of this data set and comment on the data distribution.
 
 ```{r}
-# load("l4b_data.rdata")
+# load(url('https://github.com/hungtong/DS-01-101/raw/refs/heads/main/dataset/l4b_data.rdata'))
 ```
 
 **Answer:**
@@ -176,7 +181,7 @@ $$
     4.  $Q_3$ - Third quartile or $75$th percentile
     5.  Maximum (largest value)
 
-## Variance and standard deviation
+## Interquartile range (IQR), variance, and standard deviation
 
 -   Variability is also known as spread. Variability refers to how much the data values are spread out.
 
@@ -228,10 +233,6 @@ Summary statistics for a data set can be obtained as follows:
 
 Find summary statistics of the `bus_driver`, `math_sat`, and `lifetime` data sets.
 
-```{r}
-# load("l4b_data.rdata")
-```
-
 **Answer:**
 
 ```{r}
@@ -263,9 +264,16 @@ Find summary statistics of the `bus_driver`, `math_sat`, and `lifetime` data set
 
 Obtain the box plots of the `bus_driver`, `math_sat`, and `lifetime` data sets.
 
+**Answer:**
+
 ```{r}
-# load("l4b_data.rdata")
+
+### R code here
 ```
+
+**Hands-On**
+
+Obtain the side-by-side box plots of the `iris` data set to compare different species of flowers.
 
 **Answer:**
 
@@ -308,7 +316,7 @@ Obtain the box plots of the `bus_driver`, `math_sat`, and `lifetime` data sets.
 
 **Hands-On**
 
-The `cars` data set gives `speed` in mph and stopping distance `dist` in ft of cars in 1920s. Obtain the correlation and scatter plot of `speed` and `dist`
+The `cars` data set gives `speed` in mph and stopping distance `dist` in ft of cars in 1920s. Obtain the correlation and scatter plot of `speed` and `dist`.
 
 **Answer:**
 
@@ -319,7 +327,7 @@ The `cars` data set gives `speed` in mph and stopping distance `dist` in ft of c
 
 **Hands-On**
 
-The `USArrest` data set contains crime statistics for assault, murder, and rape in each of the 50 US states in 1973. It also contain the percent of the population living in urban areas.
+The `USArrest` data set contains crime statistics for assault, murder, and rape in each of the 50 US states in 1973. It also contain the percent of the population living in urban areas. Obtain the correlation and scatter plot of `speed` and `dist`.
 
 **Answer:**
 
@@ -328,30 +336,13 @@ The `USArrest` data set contains crime statistics for assault, murder, and rape 
 ### R code here
 ```
 
-## Behavioral survey from the Centers for Disease Control and Prevention (CDC)
+**Hands-On**
 
-The data set is slightly modified from [OpenIntro](https://www.openintro.org/book/statdata/?data=cdc),
+Obtain the scatter plots of the `iris` data set. Use different colors and symbols to highlight different species of flowers.
 
-> The Behavioral Risk Factor Surveillance System (BRFSS) is an annual telephone survey of 350,000 people in the United States collected by the Centers for Disease Control and Prevention (CDC). As its name implies, the BRFSS is designed to identify risk factors in the adult population and report emerging health trends. For example, respondents are asked about their diet and weekly physical activity, their HIV/AIDS status, possible tobacco use, and even their level of healthcare coverage. The [BRFSS Web site](https://www.openintro.org/redirect.php?go=cdc_data_brfss&referrer=data_set_page) contains a complete description of the survey, the questions that were asked and even research results that have been derived from the data.
->
-> This data set is a random sample of 20,000 people from the BRFSS survey conducted in 2000. While there are over 200 questions or variables in this dataset, this data set only includes 9 variables.
+**Answer:**
 
-The data set has the following variables:
+```{r}
 
--   `genhlth` - General health, with categories Excellent, Very Good, Good, Fair, and Poor
-
--   `exerany` - Whether the respondent exercised in the past month
-
--   `hlthplan` - Whether respondent has some form of health coverage
-
--   `smoke100` - Whether respondent has smoked at least 100 cigarettes in their entire life
-
--   `height` - Respondent's height in inches
-
--   `weight` - Respondent's weight in pounds
-
--   `wtdesire` - Respondent's desired weight in pounds
-
--   `age` - Respondent's age in years
-
--   `gender` - Respondent's gender
+### R code here
+```

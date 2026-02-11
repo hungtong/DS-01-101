@@ -14,6 +14,14 @@ format:
     self-contained: true
 ---
 
+```{r}
+#| include: false
+#| eval: true
+
+load(url('https://github.com/hungtong/DS-01-101/raw/refs/heads/main/dataset/l4a_data.rdata'))
+load(url('https://github.com/hungtong/DS-01-101/raw/refs/heads/main/dataset/cdc.rdata'))
+```
+
 ## Topics
 
 -   Basic variable types
@@ -88,10 +96,6 @@ format:
 
 Obtain the frequency distribution and bar plot of the `soft_drink` data set.
 
-```{r}
-# load("l4a_data.rdata")
-```
-
 **Answer:**
 
 ```{r}
@@ -106,7 +110,6 @@ Obtain the frequency distribution and bar plot of the `soft_drink` data set.
 Try the following code and describe the difference between the two methods of generating a bar plot for the `activity` data set.
 
 ```{r}
-# load("l4a_data.rdata")
 
 freq <- table(activity)
 
@@ -140,10 +143,6 @@ barplot(
 **Hands-On**
 
 Obtain the contingency table and bar plot of the `pet` and `vacation` data set.
-
-```{r}
-# load("l4a_data.rdata")
-```
 
 **Answer:**
 
@@ -186,14 +185,11 @@ The data set has the following variables:
 
 Retrieve the first few respondents, a vector of variable names, and the structure of the `cdc` data set. 
 
-```{r}
-# load("cdc.rdata")
-```
-
 **Answer:**
 
 ```{r}
 
+### R code here
 ```
 
 **Hands-On**
@@ -204,6 +200,7 @@ How many respondents are there? How many variables? Identify the type of each va
 
 ```{r}
 
+### R code here
 ```
 
 **Hands-On**
@@ -214,6 +211,7 @@ Are there any missing values in the data set?
 
 ```{r}
 
+### R code here
 ```
 
 **Hands-On**
@@ -224,6 +222,7 @@ Examine the general health of respondents using appropriate summary statistics a
 
 ```{r}
 
+### R code here
 ```
 
 **Hands-On**
@@ -234,6 +233,7 @@ Examine the number of respondents who have smoked 100 cigarettes in their lifeti
 
 ```{r}
 
+### R code here
 ```
 
 **Hands-On**
@@ -244,4 +244,5 @@ What is the relationship between smoking habits and general health?
 
 ```{r}
 
+### R code here
 ```
