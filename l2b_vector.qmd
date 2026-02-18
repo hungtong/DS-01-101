@@ -481,9 +481,9 @@ temps <- c(
 -   Subsetting can be done using one of the following indexing methods:
 
     -   Numeric indexing
-    
+
     -   Logical indexing
-    
+
     -   Character indexing (if the vector has names; not covered here)
 
 ## Numeric indexing
@@ -715,11 +715,11 @@ rev(cost)
 
 The vectors `scores` and `grades` contain exam scores and the corresponding letter grades for students in a statistics class. Write R code to:
 
--    Show the first and last few exam scores
+-   Show the first and last few exam scores
 
--    Sort the exam scores in decreasing order
+-   Sort the exam scores in decreasing order
 
--    Show unique letter grades of students in this class and their frequencies 
+-   Show unique letter grades of students in this class and their frequencies
 
 ```{r}
 

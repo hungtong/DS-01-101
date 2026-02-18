@@ -50,7 +50,7 @@ The hands-on activities below are adapted from the [Introduction to data lab](ht
 
 **Hands-On**
 
-Obtain numerical summaries and box plots of `height`, `weight`, and `age` in the `cdc` data set.
+Describe the data distributions of variables `height`, `weight`, and `age` in the `cdc` data set.
 
 **Answer:**
 
@@ -61,7 +61,7 @@ Obtain numerical summaries and box plots of `height`, `weight`, and `age` in the
 
 **Hands-On**
 
-Describe the data distributions of variables `height`, `weight`, and `age` in the `cdc` data set.
+Obtain numerical summaries and box plots of `height`, `weight`, and `age` in the `cdc` data set.
 
 **Answer:**
 
@@ -80,7 +80,6 @@ Compare `height` and `weight` of male and female individuals.
 
 ### R code here
 ```
-
 
 **Hands-On**
 
@@ -110,7 +109,7 @@ According to standard guidelines, BMI is categorized as underweight (less than 1
 
 **Hands-On**
 
-Obtain the correlation and scatter plot of `weight` and desired weight `wtdesire`. 
+Obtain the correlation and scatter plot of `weight` and desired weight `wtdesire`.
 
 **Answer:**
 
@@ -133,17 +132,6 @@ Add a new variable `wdiff` to the `cdc` data set to represent the difference bet
 **Hands-On**
 
 Describe the data distribution of `wdiff` in the `cdc` data set.
-
-**Answer:**
-
-```{r}
-
-### R code here
-```
-
-**Hands-On**
-
-Compare `wdiff` of male and female individuals. What conclusion can you make about how people feel about their current weight?
 
 **Answer:**
 
