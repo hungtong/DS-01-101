@@ -183,7 +183,7 @@ The data set has the following variables:
 
 **Hands-On**
 
-Retrieve the first few respondents, a vector of variable names, and the structure of the `cdc` data set. 
+Retrieve the first few respondents, a vector of variable names, and the structure of the `cdc` data set.
 
 **Answer:**
 
