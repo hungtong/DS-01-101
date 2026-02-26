@@ -246,7 +246,7 @@ glimpse(mpg)
 
 ![From Saketh Ram Gangam](https://github.com/hungtong/DS-01-101/blob/main/image/5_grammar_graphics.png?raw=true){fig-align="center" width="412"}
 
--   `ggplot2` builts a plot by adding multiple layers, each of which has a specific role. At the most basic level, a `ggplot2` consist of:
+-   `ggplot2` builds a plot by adding multiple layers, each of which has a specific role. At the most basic level, a `ggplot2` consist of:
 
     -   The data set to visualize
     -   Aesthetics that map variables to visual properties
